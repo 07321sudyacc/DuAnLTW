@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterLayout2.cshtml";
+}
+<div style="margin: 10px auto; width: 90%;">
+    <h2 style="text-align: center">Danh Sách Sản Phẩm</h2>
+    <hr />
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between   ">
+        @foreach (var i in Model)
+        {
+            <div style="margin-top:2%">
+                <div class="card" style="width: 15rem;">
+                    <a href="/CustomerProducts/Details/@i.ProductID" style="text-decoration: none">
+                        <img src="~/Images/@i.ImagePro" class="card-img-top">
+                    </a>
+                    <div class="card-footer">
+                        <a href="/CustomerProducts/Details/@i.ProductID" style="text-decoration: none">
+                            <h5 class="card-title">@i.NamePro</h5>
+                        </a>
+                        <p class="card-text" style="text-align:right;margin:0;color:red;">@i.Price VND</p>
+
+                        <a href="@Url.Action("AddToCart", "Cart", new {id = i.ProductID })" class="btn btn-primary">ĐẶT MUA</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
